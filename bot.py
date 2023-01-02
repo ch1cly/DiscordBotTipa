@@ -1,12 +1,14 @@
-#import os
+local = True #change if not
+
+if not local:
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
 # This example requires the 'message_content' intent.
 
 import discord
 from bs4 import BeautifulSoup
 import requests
-#from dotenv import load_dotenv
-
-#load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -66,7 +68,7 @@ async def on_message(message):
 
     if message.content.startswith('!привет'):
         name =''
-        if message.author.nick == 'None':
+        if message.author.nick == None:
             name = message.author.display_name
         else:
             name = message.author.nick
@@ -92,10 +94,10 @@ async def on_message(message):
                '!анекдот [год] [месяц(цифра)] [номер(1-12)]  |Найти анекдот \n'
         await message.channel.send(ansv)
 
+if not local:
+    TOKEN = os.environ['TOKEN']
+else:
+    f = open("loacltoken.txt", "r")
+    TOKEN = f.read()
 
- #TOKEN = os.environ['TOKEN']
-
-client.run(TOKEN)
-f = open("loacltoken.txt", "r")
-TOKEN = f.read()
 client.run(TOKEN)
