@@ -17,7 +17,8 @@ async def on_message(message):
         return
 
     if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+        await message.channel.send('Hello epta!')
 
-
-client.run('your token here')
+f = open("loacltoken.txt", "r")
+TOKEN = f.read()
+client.run(TOKEN)
