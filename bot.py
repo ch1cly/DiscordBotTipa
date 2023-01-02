@@ -65,6 +65,12 @@ async def on_message(message):
         return
 
     if message.content.startswith('!привет'):
+        name =''
+        if message.author.nick == 'None':
+            name = message.author.display_name
+        else:
+            name = message.author.nick
+
         roles = ''
         for r in message.author.roles:
             if r.name != '@everyone':
@@ -72,7 +78,7 @@ async def on_message(message):
                     roles += ', '
                 roles += r.name
         await message.channel.send('{}, здарова, заебал!\n'
-                                   'Ты оказывается у наc еще {}'.format(message.author.nick,roles))
+                                   'Ты оказывается у наc еще {}'.format(name,roles))
 
     if message.content.startswith('!анекдот'):
         await message.channel.send(anekdot(message))
