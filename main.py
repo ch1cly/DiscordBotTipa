@@ -9,6 +9,7 @@ if not local:
 import discord
 from bs4 import BeautifulSoup
 import requests
+import random
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -88,10 +89,19 @@ async def on_message(message):
     if message.content.startswith('!лучший'):
         await message.channel.send(anekdot(message))
 
+    if message.content.startswith('!рандом'):
+        a = 1
+        b = 100
+        if len(message.content.split(' ')) == 3:
+            a = message.content.split(' ')[1]
+            b = message.content.split(' ')[2]
+        await message.channel.send(random.randint(a,b))
+
     if message.content.startswith('!помощь'):
         ansv = 'Я могу:\n' \
                '!привет |Поприветствовать тебя\n' \
-               '!анекдот [год] [месяц(цифра)] [номер(1-12)]  |Найти анекдот \n'
+               '!анекдот [год] [месяц(цифра)] [номер(1-12)]  |Найти анекдот \n' \
+               '!рандом [n1] [n2] | Случайное число от числе n1 до n2 включительно'
         await message.channel.send(ansv)
 
 if not local:
