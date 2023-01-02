@@ -1,9 +1,12 @@
+#import os
 # This example requires the 'message_content' intent.
 
 import discord
 from bs4 import BeautifulSoup
 import requests
 #from dotenv import load_dotenv
+
+#load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -83,8 +86,10 @@ async def on_message(message):
                '!анекдот [год] [месяц(цифра)] [номер(1-12)]  |Найти анекдот \n'
         await message.channel.send(ansv)
 
-#load_dotenv()
-#TOKEN = os.getenv('DISCORD_TOKEN')
+
+ #TOKEN = os.environ['TOKEN']
+
+client.run(TOKEN)
 f = open("loacltoken.txt", "r")
 TOKEN = f.read()
 client.run(TOKEN)
