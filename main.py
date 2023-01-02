@@ -80,6 +80,9 @@ async def on_message(message):
                 if roles != '':
                     roles += ', '
                 roles += r.name
+
+        if roles == '':
+            roles = 'по жизни никто'
         await message.channel.send('{}, здарова, заебал!\n'
                                    'Ты оказывается у наc еще {}'.format(name,roles))
 
