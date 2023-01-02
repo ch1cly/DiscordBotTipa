@@ -1,4 +1,4 @@
-local = True #change if not
+local = True #change if not on False
 
 if not local:
     import os
