@@ -96,8 +96,8 @@ async def on_message(message):
         a = 1
         b = 100
         if len(message.content.split(' ')) == 3:
-            a = message.content.split(' ')[1]
-            b = message.content.split(' ')[2]
+            a = int(message.content.split(' ')[1])
+            b = int(message.content.split(' ')[2])
         await message.channel.send(random.randint(a,b))
 
     if message.content.startswith('!помощь'):
